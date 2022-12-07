@@ -86,5 +86,55 @@ console.log(`Server running at ${url}`);
 
 ```
 
+** RUNNING GRAPH QL SERVER **
+
 - Now start the server in terminal in SERVER folder with ` node server.js`
 - O/p: `Server running at http://localhost:5000/`
+
+---
+
+# Query Language
+
+- When you click on `http://localhost:5000/ ` it will open to
+  apollo local server, click on 'query your server' it will redirect to `https://studio.apollographql.com/sandbox/explorer`
+
+- Enter the ctrl+space give different items like fragment, query, mutation and subscription
+
+![Image](./SERVER//Imgs/query_language/1.png)
+
+Proper Query and Response:
+
+![Image](./SERVER/Imgs/query_language/2.png)
+
+Error and Response:
+![Image](./SERVER//Imgs/query_language/3.png)
+
+Optional
+![Image](./SERVER//Imgs/query_language/4.png)
+
+By default it will consider the type 'Query' as 'query' but we can define inside the schema {} as below
+![Image](./SERVER/Imgs/query_language/5.png)
+
+Everything in one go
+
+![Image](./SERVER//Imgs/query_language/6.png)
+
+# GraphQL Request when sent over HTTP
+
+- Client posts some json and the server posts back the json
+
+![Image](./SERVER//Imgs/graphQLOverHttp/1.png)
+![Image](./SERVER/Imgs/graphQLOverHttp/2.png)
+
+Payloads
+
+![Image](./SERVER/Imgs/graphQLOverHttp/3.png)
+
+Response from the server
+
+- We got status Code : 200 OK in 'headers' at 'general' meaning it is successfull
+- So the response will be as shown below:
+
+![Image](./SERVER/Imgs/graphQLOverHttp/4.png)
+
+# GraphQL Client
