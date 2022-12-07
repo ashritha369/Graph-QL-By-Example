@@ -138,3 +138,110 @@ Response from the server
 ![Image](./SERVER/Imgs/graphQLOverHttp/4.png)
 
 # GraphQL Client
+
+- created folder named CLIENT and added index.html with client.js
+
+- index.html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple GRAPH-QL Client Project</title>
+  </head>
+  <body>
+    <h1>GraphQL CLIENT</h1>
+    <p>
+      The server says:
+      <strong id="greeting">
+        <!-- dynamically inserting the content -->
+      </strong>
+    </p>
+    <script src="./client.js"></script>
+  </body>
+</html>
+
+```
+
+- client.js
+
+```
+const GRAPHQL_URL = "http://localhost:5000/";
+
+async function fetchGreeting() {
+  const response = await fetch(GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        greeting
+      }
+        `,
+    }),
+  });
+  const responseBody = await response.json();
+  console.log(responseBody);
+}
+
+const element = document.getElementById("greeting");
+element.textContent = "Loading...";
+
+fetchGreeting();
+
+
+```
+
+when we go live and this will run in different port 5500
+
+O/p will be:
+
+![Image](./CLIENT/Imgs/1.png)
+
+Adding to DOM
+
+- client.js
+
+```
+const GRAPHQL_URL = "http://localhost:5000/";
+
+async function fetchGreeting() {
+  const response = await fetch(GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        greeting
+      }
+        `,
+    }),
+  });
+  const { data } = await response.json();
+  console.log(data);
+  return data;
+}
+
+const element = document.getElementById("greeting");
+element.textContent = "Loading...";
+
+fetchGreeting();
+
+fetchGreeting().then(({greeting}) => {
+  element.textContent = greeting;
+});
+
+```
+
+O/p:
+
+![Image](/CLIENT/Imgs/2.png)
+
+![Image](/CLIENT/Imgs/3.png)
